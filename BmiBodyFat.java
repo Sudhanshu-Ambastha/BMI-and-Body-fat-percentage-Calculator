@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Scanner;
 
 public class BMICalculator {
 
@@ -11,13 +12,13 @@ public class BMICalculator {
         String gender = scanner.next().toLowerCase();
 
         double bmi = calculateBMI(weightKg, heightInches);
-        System.out.println("BMI: " + bmi);
+        System.out.println("BMI: " + roundTwoDecimals(bmi));
         
         String bmiCategory = determineBMICategory(bmi);
         System.out.println("BMI Category: " + bmiCategory);
         
         double bodyFat = calculateBodyFat(bmi, gender, age);
-        System.out.println("Body Fat %: " + bodyFat + "%");
+        System.out.println("Body Fat %: " + roundTwoDecimals(bodyFat) + "%");
         
         String bodyFatCategory = determineBodyFatCategory(gender, bodyFat);
         System.out.println("Body Fat Category: " + bodyFatCategory);
@@ -75,5 +76,9 @@ public class BMICalculator {
             else if (bodyFat >= 31) category = "Obese";
         }
         return category;
+    }
+
+    private static double roundTwoDecimals(double value) {
+        return Math.round(value * 100.0) / 100.0;
     }
 }
