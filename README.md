@@ -32,15 +32,15 @@ The program employs the following formulas:
 
 Input:-
 ```
-Height (in inches): 70
-Weight (in kilograms): 61
-Age (in years): 17
+Height (in inches): 72
+Weight (in kilograms): 80
+Age (in years): 30
 Gender (male/female): male
 ```
 Output:-
 ```
-BMI: 19.30
-BMI Category: Normal Weight
-Body Fat %: 10.87%
-Body Fat Category: Fitness
+BMI: 25.65
+BMI Category: Overweight
+Body Fat %: 19.96%
+Body Fat Category: Average
 ```
