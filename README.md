@@ -39,8 +39,8 @@ Gender (male/female): male
 ```
 Output:-
 ```
-BMI: 25.65
-BMI Category: Overweight
-Body Fat %: 19.96%
+BMI: 23.91970524691358
+BMI Category: Normal Weight
+Body Fat %: 19.403646296296298%
 Body Fat Category: Average
 ```
