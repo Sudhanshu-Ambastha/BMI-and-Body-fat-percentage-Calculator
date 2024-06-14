@@ -9,6 +9,9 @@ public class BMICalculator {
         double heightInches = scanner.nextDouble();
         double weightKg = scanner.nextDouble();
         double age = scanner.nextDouble();
+        double neck = scanner.nextDouble();
+        double waist = scanner.nextDouble();
+        double hipInches = scanner.nextInt();
         String gender = scanner.next().toLowerCase();
 
         double bmi = calculateBMI(weightKg, heightInches);
@@ -17,7 +20,7 @@ public class BMICalculator {
         String bmiCategory = determineBMICategory(bmi);
         System.out.println("BMI Category: " + bmiCategory);
         
-        double bodyFat = calculateBodyFat(bmi, gender, age);
+        double bodyFat = calculateBodyFat(gender, waist, neck, heightInches, age, hipInches);
         System.out.println("Body Fat %: " + roundTwoDecimals(bodyFat) + "%");
         
         String bodyFatCategory = determineBodyFatCategory(gender, bodyFat);
@@ -42,19 +45,14 @@ public class BMICalculator {
         }
     }
     
-    public static double calculateBodyFat(double bmi, String gender, double age) { // Change the type to double
+    public static double calculateBodyFat(String gender, double waist, double neck, double heightInches, double age, double hipInches) {
         double bodyFat = 0;
         if (age >= 18) {
             if (gender.equals("male")) {
-                bodyFat = (1.20 * bmi) + (0.23 * age) - 16.2; 
+                bodyFat =  86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(heightInches) + 36.76;
             } else {
-                bodyFat = (1.20 * bmi) + (0.23 * age) - 5.4;
-            }
-        } else {
-            if (gender.equals("male")) {
-                bodyFat = (1.51 * bmi) - (0.70 * age) - 2.2; 
-            } else {
-                bodyFat = (1.51 * bmi) - (0.70 * age) + 1.4;
+                // Assuming hip measurement is also required for females, let's add it to input
+                bodyFat = 163.205 * Math.log10(waist + hipInches - neck) - 97.684 * Math.log10(heightInches) - 78.387;
             }
         }
         return bodyFat;
